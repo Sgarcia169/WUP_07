@@ -23,7 +23,13 @@ mutate(across(where(is.character), as.factor))
 
 Some of the data was uncoded for sex - sex must be just male or female
 77 of the data entries were coded sex  as blank, so we omit these.
-state of a patient must be died or alive - we adjust that as well   
+state of a patient must be died or alive - we adjust that as well 
+
+?
+
+$H_0$ There is a connection between COVID-19 and the death associated by sex. 
+
+$H_A$ There is no difference between the connection of COVID-19 and the death associated by sex. 
   
 # Your Question - Is dying independent of sex?
 
