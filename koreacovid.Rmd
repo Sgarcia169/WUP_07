@@ -19,43 +19,75 @@ mutate(across(where(is.character), as.factor))
 
 ```
 ### Data is from the Patient_Info dataset from South Korea 1 Jan to 1 May 2020
-### This data was retrieved from a downloadable zip file from kaggle
+### These data was retrieved from a downloadable zip file from kaggle
 
 Some of the data was uncoded for sex - sex must be just male or female
 77 of the data entries were coded sex  as blank, so we omit these.
 state of a patient must be died or alive - we adjust that as well 
 
-?
+```{r}
+str(kRdata)
+```
 
-$H_0$ There is a connection between COVID-19 and the death associated by sex. 
 
-$H_A$ There is no difference between the connection of COVID-19 and the death associated by sex. 
+
   
 # Your Question - Is dying independent of sex?
 
+$H_0$: There is no difference between the connection of COVID-19 deaths and the death based on sex. 
 
+$H_A$: There is a difference between the connection of COVID-19 deaths and the death associated based on sex. 
 
+## Method
 
+The respone variable is categorical and the explanitory variable is categorical. We will be utilizing the helper file Cat~Cat. 
 
 
 ## Graphical results - use ggplot commands to do this  
 
 
+```{r}
+dd2 <- kRdata %>% group_by(result,Sex) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=Sex,y=count,fill=result))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=Sex,y=prcnt*100,fill=result)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+  
+According to the graph the plot indicates that more men die compared to women who contract COVID-19.
+  
+### Numerical Summaries  
+
+```{r}
+table1 <- xtabs(~result + Sex, data=kRdata)
+rowPerc(table1)
+colPerc(table1)
+```
+```
+Among those who died, almost twice as many men dies when compared to women. 
   
 
 
-
-
-
-  
-## Numerical results
-
+## Inferential Result 
 
 ## Inferential results 
 
+```{r}
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+```
 
-
+The chart indicates that the P-value is 0.00000004, which is less than 0.05, so we reject the null hypothesis. 
 
 ## Conclusions
 
