@@ -87,8 +87,8 @@ fisher.test(table1)
 ```
 ```
 
-The chart indicates that fisher exact test has a P-value is 0.00000004, which is less than 0.05, so we reject the null hypothesis. 
+The chart indicates that fisher exact test has a P-value is 0.00000004, which is less than 0.05, so we reject the null hypothesis. The samle indicates that males are 2.3 times more likely to die from COVID-19 in Korea.
 
 ## Conclusions
 
-In conclusion, we see that there is no difference between the effect of COVID-19 and the death associated based on sex. The P-value is less than 0.05, so we rejected the null hypothesis. The effects of COVID-19 on both men and women is too random to establish a straight line trend. 
+In conclusion, we see that there is no difference between the effect of COVID-19 and the death associated based on sex. The P-value is less than 0.05, so we rejected the null hypothesis. The samle indicates that males are 2.3 times more likely to die from COVID-19 in Korea.
